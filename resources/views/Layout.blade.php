@@ -76,7 +76,17 @@
           <div class="card my-4">
             <h5 class="card-header">Мы в социальных сетях</h5>
             <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+              <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    @inject('social_network', '\App\SocialNetwork')
+                    @foreach($social_network->show_social_network() as $sn)
+                    <li>
+                      <a href="{{$sn->url}}">{{$sn->name}}</a>
+                      
+                    </li>
+                    @endforeach
+                  </ul>
+                </div>
             </div>
           </div>
 
