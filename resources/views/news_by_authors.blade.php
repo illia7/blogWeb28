@@ -23,10 +23,16 @@
             <div class="card-body">
               <h2 class="card-title">{{$new->title}}</h2>
               <p class="card-text">{{$new->body}}</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+              <a href="{{route('single_news', $new->id)}}" class="btn btn-primary">Read More</a>
             </div>
             <div class="card-footer text-muted">
               Posted on {{$new->created_at}}
+            </div>
+            <div class="card-footer text-muted">
+              Категории:
+              @foreach($new->category as $categor)
+               <a style='background-color: yellow; color:red' href="{{route('news_by_category',$categor->key)}}">{{$categor->category}}</a>
+              @endforeach
             </div>
           </div>
 @endforeach

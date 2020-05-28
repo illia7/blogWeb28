@@ -62,7 +62,7 @@
                     @inject('categories', '\App\Category')
                     @foreach($categories->show_categories() as $category)
                     <li>
-                      <a href="#">{{$category->category}}</a>
+                      <a href="{{route('news_by_category',$category->key)}}">{{$category->category}}</a>
                       
                     </li>
                     @endforeach
@@ -101,7 +101,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; DemSoft 2020</p>
       </div>
       <!-- /.container -->
     </footer>

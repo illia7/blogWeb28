@@ -1,7 +1,7 @@
 @extends('Layout')
 
 
-@section('title', 'Блог - главная')
+@section('title', 'Новости категории')
 
 @section('content')
     <!-- Page Content -->
@@ -12,18 +12,18 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-          <h1 class="my-4">Page Heading
-            <small>Secondary Text</small>
+          <h1 class="my-4">Все новости категории:
+            <small style="color:red">{{$category->category}}</small>
           </h1>
 
-@foreach($news as $new)
+@foreach($category -> news as $new)
           <!-- Blog Post -->
           <div class="card mb-4">
             <img class="card-img-top" src="{{$new->img}}" alt="Card image cap">
             <div class="card-body">
               <h2 class="card-title">{{$new->title}}</h2>
               <p class="card-text">{{mb_substr($new->body, 0, 200)}} ...</p>
-              <a href="{{route('single_news', $new->id)}}" class="btn btn-primary">Read More</a>
+              <a href="{{route('single_news', $new->id)}}" class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">
               Posted on {{$new->created_at}} by
@@ -40,25 +40,13 @@
 
           <!-- Pagination -->
           <ul class="pagination justify-content-center mb-4">
-            @if($news->currentPage() != 1)
-              <li class="page-item"><a class="page-link" href="?page=1">Начало</a></li>
-              <li class="page-item"><a class="page-link" href="{{$news->previousPageUrl()}}"> <- </a></li>
-            @endif
-
-            @if($news->count() > 1)
-              @for($count=1; $count <= $news->lastPage(); $count++)
-                @if($count > $news->currentPage()-3 and $count < $news->currentPage()+3)
-                <li class="page-item @if($count == $news->currentPage()) active @endif">  <a class="page-link" href="?page={{$count}}"> {{$count}} </a></li>
-                @endif
-              @endfor
-            @endif
-
-            @if($news->currentPage() != $news->lastPage())
-              <li class="page-item"><a class="page-link" href="{{$news->nextPageUrl()}}"> -> </a></li>
-              <li class="page-item"><a class="page-link" href="?page={{$news->lastPage()}}">Конец</a></li>
-            @endif
+            <li class="page-item">
+              <a class="page-link" href="#">&larr; Older</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Newer &rarr;</a>
+            </li>
           </ul>
-          
 
         </div>
 @endsection
