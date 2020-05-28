@@ -9,4 +9,8 @@ class Category extends Model
    public function show_categories(){
    		return Category::all();
    }
+
+   public function news(){
+   		return $this->belongsToMany(News::class);
+   }
 }
