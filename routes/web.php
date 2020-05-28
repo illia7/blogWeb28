@@ -24,3 +24,5 @@ Route::get('/services', 'PageController@services')->name('services');
 Route::get('/author/{key}', News_by_author_controller::class)->name('news_by_authors');
 
 Route::get('/news/{id}', Single_news_controller::class)->name('single_news');
+
+Route::get('/category/{key}', News_by_category::class)->name('news_by_category');

@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function(){
+	return response() -> json(['User' => ['Name' => 'Ivan', 'Email' => 'example@mail.ua']], 200);
+});
+
+Route::get('/news', function(){
+	return response() -> json(\App\News::all(),200);
 });
