@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function(){
-	return response() -> json(['User' => ['Name' => 'Ivan', 'Email' => 'example@mail.ua']], 200);
-});
+Route::get('/','ApiCRUDcontroller@start');
 
-Route::get('/news', function(){
-	return response() -> json(\App\News::all(),200);
-});
+Route::get('/news', 'ApiCRUDcontroller@readNews');
+
+Route::get('/news/{id}', 'ApiCRUDcontroller@singleNews');
+
+Route::post('/news', 'ApiCRUDcontroller@create');
+
+Route::put('/news/{id}', 'ApiCRUDcontroller@update');
+
+Route::delete('/news/{id}', 'ApiCRUDcontroller@deleteNews');
