@@ -1,7 +1,7 @@
 @extends('Layout')
 
 
-@section('title', 'Посты автора')
+@section('title', 'Новости автора')
 
 @section('content')
     <!-- Page Content -->

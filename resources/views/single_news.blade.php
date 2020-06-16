@@ -29,6 +29,12 @@
               Posted on {{$news->created_at}}
               <a href="{{route('news_by_authors', $news->author->key)}}">{{$news->author->name}}</a>
             </div>
+             <div class="card-footer text-muted">
+              Категории:
+              @foreach($news->category as $categor)
+               <a style='background-color: yellow; color:red' href="{{route('news_by_category',$categor->key)}}">{{$categor->category}}</a>
+              @endforeach
+            </div>
           </div>
 
 

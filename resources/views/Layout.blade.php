@@ -23,13 +23,16 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="{{route('home')}}">Football News</a>
+        <a class="navbar-brand" href="{{route('index')}}">Football News</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            
+            <form method="POST" action="mail_subscribed">
+              <input type="text" name="email">
+              <input type="submit" value="Подписаться">
+            </form>
             <li class="nav-item">
               <a class="nav-link" href="{{route('about')}}">О нас</a>
             </li>
@@ -39,6 +42,17 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('contacts')}}">Контакты</a>
             </li>
+            @if(\Auth::check())
+              <li class="nav-item" >
+                <a class="nav-link" style="color:red" href="{{route('add_news_get')}}">Админка</a>
+              </li>
+            @endif
+              <li class="nav-item" >
+                <a class="nav-link" style="color:green" href="{{route('home')}}">@if(\Auth::check())
+                  {{\Auth::user()->name}}  
+                  @else Вход @endif</a>
+              </li>
+            
           </ul>
         </div>
       </div>
